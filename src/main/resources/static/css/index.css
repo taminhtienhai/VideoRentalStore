@@ -1,0 +1,85 @@
+/* Variable */
+:root {
+    /* Named Layout */
+    --nav-name: nav;
+    --left-side-name: left;
+    --right-side-name: right;
+    --content-name: con;
+    --footer-name: foot;
+    /* Color */
+    --nav-background-color: #eeeeee;
+    --nav-font-color: pink;
+    --content-background-color: #f7f7f7;
+    --content-font-color: black;
+
+    /* Image */
+    --content-background-image: url('/images/background.svg');
+
+    /* Animation */
+    --slowly-spin: spin 100s linear infinite;
+}
+
+/* Layout */
+html {
+    height: 100%;
+}
+body {
+    display: grid;
+    grid-template:
+            "nav nav nav" 10%
+            "con con con" auto / 1fr 1fr 1fr;
+    padding: 5px;
+    /** **/
+    box-sizing: border-box;
+    margin: 0;
+    min-height: 100%;
+}
+
+nav {
+    z-index: 1;
+    grid-area: var(--nav-name);
+    background: radial-gradient(circle, rgba(238,238,238,1) 0%, rgba(247,247,247,1) 100%);
+    box-shadow: 0px 1px 7px 1px rgba(135,135,135,0.42);
+
+    border: 1px solid #D8D6D6;
+    border-radius: 5px;
+}
+
+main {
+    z-index: 0;
+    grid-area: var(--content-name);
+    border-radius: 0 0 5px 5px;
+    background-color: var(--content-background-color);
+    position: relative;
+    overflow: hidden;
+}
+
+main:before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    z-index: -1;
+    background-image: var(--content-background-image);
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: var(--slowly-spin);
+}
+
+nav, main {
+    padding: 10px;
+}
+
+/* Responsive */
+
+/* Animation */
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* Core */
+
+/* Util */
+
