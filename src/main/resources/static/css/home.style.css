@@ -1,0 +1,39 @@
+:root {
+    --filter-mask: blur(3px) brightness(90%);
+}
+
+main {
+    display: flex;
+    position: relative;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    justify-items: flex-start;
+    align-content: flex-start;
+}
+
+ng-view::before {
+    filter: var(--filter-mask);
+}
+
+main > .item {
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+    grid-template-columns: 1fr;
+    width: calc(max(100%/6, 600px/4) - 20px);
+    height: calc(100%/3.5);
+    margin: 10px;
+}
+
+main > .item {
+    border: 1px solid #aaa;
+    border-radius: var(--light-border);
+    background-color: #f7f7f7;
+    text-align: center;
+    transition: linear .06s;
+}
+
+main > .item:hover {
+    box-shadow: 0 1px 7px 0 var(--shadow-color);
+    transform: translateY(1px);
+}

@@ -1,5 +1,6 @@
 package iuh.software.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,8 +9,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
-@Setter
-@Getter
+@Data
 @Entity(name = "reserve_detail")
 public class ReserveDetail extends AbstractBaseModel {
 

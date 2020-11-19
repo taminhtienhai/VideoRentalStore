@@ -1,5 +1,6 @@
 package iuh.software.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,8 +12,7 @@ import java.time.Duration;
 import java.util.Set;
 
 @NoArgsConstructor
-@Setter
-@Getter
+@Data
 @Entity(name = "record_status")
 public class RecordStatus extends AbstractBaseModel{
 

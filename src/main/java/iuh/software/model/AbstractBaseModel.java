@@ -1,5 +1,6 @@
 package iuh.software.model;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
@@ -9,6 +10,9 @@ import java.util.UUID;
 public abstract class AbstractBaseModel implements Persistable<UUID> {
 
     @Id
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", length = 16, unique = true, nullable = false)
     private UUID id;
 
@@ -16,7 +20,6 @@ public abstract class AbstractBaseModel implements Persistable<UUID> {
     private boolean persisted = id != null;
 
     public AbstractBaseModel() {
-        this.id = UUID.randomUUID();
     }
 
     @Override

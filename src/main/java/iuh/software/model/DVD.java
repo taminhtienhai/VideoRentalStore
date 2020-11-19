@@ -8,8 +8,7 @@ import java.util.Set;
 
 @NoArgsConstructor
 @RequiredArgsConstructor
-@Setter
-@Getter
+@Data
 @Entity(name = "dvd")
 public class DVD extends AbstractBaseModel{
 

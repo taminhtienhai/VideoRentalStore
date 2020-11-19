@@ -7,8 +7,7 @@ import java.io.Serializable;
 
 @NoArgsConstructor
 @RequiredArgsConstructor
-@Setter
-@Getter
+@Data
 @Entity(name = "rental_detail")
 public class RentalDetail extends AbstractBaseModel {
 

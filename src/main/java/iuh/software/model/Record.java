@@ -7,8 +7,7 @@ import java.util.Set;
 
 @NoArgsConstructor
 @RequiredArgsConstructor
-@Setter
-@Getter
+@Data
 @Entity(name = "record")
 public class Record extends AbstractBaseModel {
 

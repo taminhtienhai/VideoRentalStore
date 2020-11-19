@@ -2,15 +2,15 @@ package iuh.software.model;
 
 import lombok.*;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.Set;
 
 @NoArgsConstructor
 @RequiredArgsConstructor
-@Setter
-@Getter
+@Data
 @Entity(name = "customer")
 public class Customer extends AbstractBaseModel {
 
