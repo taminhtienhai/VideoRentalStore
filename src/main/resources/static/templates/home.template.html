@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/home.style.css">
 <main>
-    <article class="item" ng-repeat="product in all | filter: searchBox">
+    <article class="item" ng-repeat="product in all | filter: searchBox"  ng-click="loadAllDVD(10)">
         <img src="" alt="no image">
         <p>{{product.name}}</p>
     </article>

@@ -30,7 +30,7 @@ main > .item {
     border-radius: var(--light-border);
     background-color: #f7f7f7;
     text-align: center;
-    transition: linear .06s;
+    transition: ease .06s;
 }
 
 main > .item:hover {
