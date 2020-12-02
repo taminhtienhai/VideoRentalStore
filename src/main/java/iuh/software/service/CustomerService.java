@@ -8,4 +8,5 @@ import java.util.Set;
 public interface CustomerService {
     Optional<Customer> searchById(Long id);
     Set<Customer> searchByName(String name);
+    Set<Customer> findAll();
 }

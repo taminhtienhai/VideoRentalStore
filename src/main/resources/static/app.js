@@ -23,11 +23,22 @@ app.component('app', {
   controller: 'app.controller'
 });
 
-app.controller('app.controller', function ($scope) {
+app.controller('app.controller', function ($scope, appFactory) {
   $scope.searchBox = '';
+
+  $scope.openDialog = appFactory.openDialog;
+
 });
 
 app.service('appService', function () {
   this.scream = (message) => alert(message);
+});
+
+app.factory('appFactory', function ($mdDialog) {
+  return {
+    openDialog: (templateUrl) => (controller) => (confirm) => $mdDialog
+      .show({ templateUrl, controller })
+      .then(confirm, () => console.log(`Cancel dialog ${templateUrl}`))
+  }
 });
 

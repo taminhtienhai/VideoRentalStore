@@ -1,5 +1,6 @@
-import {get} from "../utils/ajax.util.js";
+import {get, toJSON} from "../utils/ajax.util.js";
 import { join } from "../utils/string.util.js";
+import { compute } from "../utils/functional.util.js";
 
 const home = angular.module('home', []);
 
@@ -17,24 +18,25 @@ home.controller('home.controller', function ($scope, homeService) {
     { name: 'bag'}
   ];
   $scope.product = { name: 'phone' };
-  $scope.loadAllDVD = async (maximum) => ($scope.all = await homeService.findAllDVDWithLimit(maximum).json());
-  $scope.findDVDByName = async (name) => ($scope.all = await homeService.findAllDVDWithTitle(name).json());
+  $scope.loadAllDVD = async (maximum) => ($scope.all = await homeService.findAllDVDWithLimit(maximum));
+  $scope.findDVDByName = async (name) => ($scope.all = await homeService.findAllDVDWithTitle(name));
 })
 
 home.service('homeService', function () {
   const dvdUrl = {
-    all: '/dvd/all/',
+    all: '/customer/all/',
     byName: '/dvd/name/'
   }
   /**
    * @param limit {number}
    * @returns {Promise<*>}
    */
-  this.findAllDVDWithLimit //= async (limit= 20) => await get(join(dvdUrl.all, limit)(''));
-  = async (limit= 20) => [{ name: 'hi' }];
+  this.findAllDVDWithLimit
+    = (limit= 20) => compute(toJSON, get, join(dvdUrl.all, limit))('') || [];
   /**
    * @param name {string}
    * @returns {Promise<any>}
    */
-  this.findAllDVDWithTitle = async (name= 'harry potter') => await get(join(dvdUrl.byName, name)(''));
+  this.findAllDVDWithTitle
+    = (name= 'harry potter') => compute(toJSON, get, join(dvdUrl.byName, name))('') || [];
 });
