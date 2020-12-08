@@ -1,5 +1,4 @@
-import {post, toJSON} from "./utils/ajax.util";
-import {compute} from "./utils/functional.util";
+import {post, toJSON} from "./utils/ajax.util.js";
 
 const app = angular.module('app',
   ['ngRoute', 'ngMaterial', 'home', 'product', 'dialog']);
