@@ -4,6 +4,9 @@ import iuh.software.common.CommonResponse;
 import iuh.software.model.Title;
 import iuh.software.repository.TitleRepository;
 import iuh.software.template.Response;
+
+import java.util.Optional;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,8 +21,8 @@ public class TitleController {
     }
 
     @PostMapping(value = "/insert")
-    public ResponseEntity<Response> insert(@RequestBody Title dvd) {
-        this.titleRepo.save(dvd);
+    public ResponseEntity<Response> insert(@RequestBody Title title) {
+        this.titleRepo.save(title);
         return CommonResponse.OK;
     }
 
@@ -29,8 +32,19 @@ public class TitleController {
         return ResponseEntity.ok(true);
     }
 
-    @GetMapping(value = "/update")
-    public ResponseEntity<Response> update(@PathVariable("id") Title dvd) {
+    @PostMapping(value = "/update/{id}")
+    public ResponseEntity<Response> update(@PathVariable("id") Long id , @RequestBody Title title) {
+    	Optional<Title> optionalTitle = titleRepo.findById(id);
+    	if(optionalTitle.isPresent()) {
+    		Title titleUpdate= optionalTitle.get();
+    		
+    		titleUpdate.setName(title.getName());
+    		titleUpdate.setImageUrl(title.getImageUrl());
+    		titleUpdate.setDescription(title.getDescription());
+    		titleUpdate.setTitleStatus(title.getTitleStatus());
+    	}else {
+    		System.out.println("Error Update");
+    	}
         return CommonResponse.OK;
     }
 }
