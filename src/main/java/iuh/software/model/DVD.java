@@ -21,10 +21,10 @@ public class DVD extends AbstractBaseModel{
     private Set<RentalDetail> rentalDetails;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "dvd_id", nullable = false)
+    @JoinColumn(name = "title_id", nullable = false, referencedColumnName = "id")
     private Title title;
 
-    @PostPersist
+    @PrePersist
     public void setUp(){
         this.createDate = LocalDateTime.now();
     }
