@@ -3,6 +3,7 @@ package iuh.software.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -23,17 +24,19 @@ public class Title extends AbstractBaseModel {
     @OneToMany(
             cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
             mappedBy = "title")
-    private Set<DVD> dvds;
+    private List<DVD> dvds;
 
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, mappedBy = "title")
+    @OneToMany(
+            cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
+            mappedBy = "title")
     private Set<ReserveDetail> reserveDetails;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "title_status_id")
     private TitleStatus titleStatus;
 
-    @PostPersist
+    @PrePersist
     private void setUp() {
-        dvds.forEach(dvd -> dvd.setId(this.getId()));
+        dvds.forEach(dvd -> dvd.setTitle(this));
     }
 }
