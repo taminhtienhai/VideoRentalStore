@@ -29,7 +29,7 @@ public class Title extends AbstractBaseModel {
     private Set<ReserveDetail> reserveDetails;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "title_status_id", nullable = false)
+    @JoinColumn(name = "title_status_id")
     private TitleStatus titleStatus;
 
     @PostPersist
