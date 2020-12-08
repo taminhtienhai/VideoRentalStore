@@ -6,7 +6,7 @@
  */
 const request = (url, type, body) => fetch(url, {
   method: type,
-  body: JSON.stringify(body),
+  body: body === null ? null : JSON.stringify(body),
   headers: {
     'Accept': 'application/json, text/plain, */*',
     'Content-Type': 'application/json'

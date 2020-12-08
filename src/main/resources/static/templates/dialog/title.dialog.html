@@ -1,7 +1,7 @@
 <md-dialog layout="column"
            style="width: 40%; height: 60%">
     <md-dialog-content layout-padding>
-        <form name="dvdForm" autocomplete="off" enctype="multipart/form-data">
+        <form name="dvdForm" autocomplete="off">
             <md-input-container class="md-block">
                 <label for="name">Title</label>
                 <input id="name"
@@ -29,17 +29,10 @@
                     </div>
                 </md-input-container>
                 <md-radio-group ng-model="dvd.type" layout="column" style="display: inline">
-                    <md-radio-button name="film" value="0">Movie</md-radio-button>
-                    <md-radio-button name="game" value="1">Game</md-radio-button>
+                    <md-radio-button name="film" value="1">Movie</md-radio-button>
+                    <md-radio-button name="game" value="2">Game</md-radio-button>
                 </md-radio-group>
             </div>
-            <md-input-container class="md-block">
-                <label for="image"></label>
-                <input id="image" name="image" type="file" required>
-                <div ng-messages="dvdForm.image.$error" role="alert">
-                    <div ng-message="required">Must enter DVD Amount</div>
-                </div>
-            </md-input-container>
             <md-input-container class="md-block">
                 <label for="description"></label>
                 <textarea id="description"

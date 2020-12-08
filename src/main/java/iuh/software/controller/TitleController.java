@@ -1,5 +1,6 @@
 package iuh.software.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import iuh.software.service.MultipartService;
@@ -28,13 +29,14 @@ public class TitleController {
 		this.multipartSer = multipartSer;
 	}
 
+	@GetMapping(value = "/all")
+	public ResponseEntity<List<Title>> findAllTitle() {
+		List<Title> titles = this.titleRepo.findAll();
+		return ResponseEntity.ok(titles);
+	}
+
 	@PostMapping(value = "/insert")
 	public ResponseEntity<Response> insert(@RequestBody Title title) {
-		Optional<String> savedImageName = this.multipartSer.store(title.getImage());
-		if (!savedImageName.isPresent()) {
-			throw new RuntimeException("Save image fail");
-		}
-		title.setImageUrl(savedImageName.get());
 		this.titleRepo.save(title);
 		return CommonResponse.OK;
 	}
