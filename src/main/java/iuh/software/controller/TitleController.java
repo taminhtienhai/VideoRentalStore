@@ -46,9 +46,9 @@ public class TitleController {
 			titleUpdate.setName(title.getName());
 			titleUpdate.setImageUrl(title.getImageUrl());
 			titleUpdate.setDescription(title.getDescription());
-			titleUpdate.setTitleStatus(title.getTitleStatus());
+		titleUpdate.setTitleStatus(title.getTitleStatus());
 
-			titleRepo.save(titleUpdate);
+			titleRepo.save(titleUpdate);	
 		} else {
 			System.out.println("Error Update");
 		}

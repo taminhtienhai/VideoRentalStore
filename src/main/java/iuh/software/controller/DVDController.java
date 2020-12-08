@@ -1,5 +1,6 @@
 package iuh.software.controller;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
@@ -41,7 +42,7 @@ public ResponseEntity<Response> update(@PathVariable("id") Long id , @RequestBod
 	if(optionalDVD.isPresent()) {
 		DVD DVDUpdate= optionalDVD.get();
 		
-		DVDUpdate.setCreateDate(dvd.getCreateDate());
+		DVDUpdate.setCreateDate(LocalDateTime.now());
 		DVDUpdate.setTitle(dvd.getTitle());
 		
 		dvdRepo.save(DVDUpdate);

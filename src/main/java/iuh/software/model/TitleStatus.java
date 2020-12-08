@@ -10,7 +10,6 @@ import javax.persistence.OneToMany;
 import java.time.Duration;
 import java.util.Set;
 
-@Builder
 @Data
 @Entity(name = "title_status")
 public class TitleStatus extends AbstractBaseModel{
@@ -25,7 +24,7 @@ public class TitleStatus extends AbstractBaseModel{
     private Long fine;
 
     @OneToMany(mappedBy = "titleStatus")
-    private Set<Title> records;
+    private Set<Title> title;
 
     public enum RecordType {
         MOVIE,
