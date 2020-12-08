@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface DVDRepository extends JpaRepository<DVD, UUID> {
+public interface DVDRepository extends JpaRepository<DVD, Long> {
 }

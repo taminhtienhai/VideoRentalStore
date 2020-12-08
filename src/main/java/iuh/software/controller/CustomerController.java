@@ -8,7 +8,6 @@ import iuh.software.service.CustomerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/customer")
@@ -29,14 +28,14 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/delete/{id}")
-    public ResponseEntity<Response> delete(@PathVariable("id") UUID id) {
+    public ResponseEntity<Response> delete(@PathVariable("id") Long id) {
         this.cusRepo.deleteById(id);
         return CommonResponse.OK;
     }
 
     @GetMapping(value = "/update")
-    public ResponseEntity<Response> update(@PathVariable("id") UUID id) {
-        this.cusRepo.deleteById(id);
+    public ResponseEntity<Response> update(@PathVariable("id") Long id) {
+        //this.cusRepo.save(id);
         return CommonResponse.OK;
     }
 }

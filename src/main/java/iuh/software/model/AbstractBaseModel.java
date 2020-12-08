@@ -1,20 +1,16 @@
 package iuh.software.model;
 
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @MappedSuperclass
-public abstract class AbstractBaseModel implements Persistable<UUID> {
+public abstract class AbstractBaseModel implements Persistable<Long> {
 
     @Id
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", length = 16, unique = true, nullable = false)
-    private UUID id;
+    private Long id;
 
     @Transient
     private boolean persisted = id != null;
@@ -23,8 +19,8 @@ public abstract class AbstractBaseModel implements Persistable<UUID> {
     }
 
     @Override
-    public UUID getId() {
-        return null;
+    public Long getId() {
+        return this.id;
     }
 
     @Override

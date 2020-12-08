@@ -2,12 +2,13 @@ package iuh.software.controller;
 
 import iuh.software.common.CommonResponse;
 import iuh.software.model.DVD;
+import iuh.software.model.Record;
 import iuh.software.repository.DVDRepository;
 import iuh.software.template.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 @RequestMapping("/dvd")
@@ -26,9 +27,9 @@ public class DVDController {
     }
 
     @GetMapping(value = "/delete/{id}")
-    public ResponseEntity<Response> delete(@PathVariable("id") UUID id) {
+    public ResponseEntity<Boolean> delete(@PathVariable("id") Long id) {
         this.dvdRepo.deleteById(id);
-        return CommonResponse.OK;
+        return ResponseEntity.ok(true);
     }
 
     @GetMapping(value = "/update")
