@@ -1,10 +1,12 @@
 package iuh.software.model;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -22,6 +24,7 @@ public class Customer extends AbstractBaseModel {
 
     private LocalDate birth;
 
+    @Email
     private String email;
 
     @OneToMany(

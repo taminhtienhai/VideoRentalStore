@@ -1,4 +1,8 @@
-const app = angular.module('app',['ngRoute', 'home', 'product']);
+import {post, toJSON} from "./utils/ajax.util";
+import {compute} from "./utils/functional.util";
+
+const app = angular.module('app',
+  ['ngRoute', 'ngMaterial', 'home', 'product', 'dialog']);
 
 app.config(function ($routeProvider) {
   $routeProvider
@@ -23,10 +27,15 @@ app.component('app', {
   controller: 'app.controller'
 });
 
-app.controller('app.controller', function ($scope, appFactory) {
+app.controller('app.controller', function ($scope, appFactory, appService) {
   $scope.searchBox = '';
 
-  $scope.openDialog = appFactory.openDialog;
+  $scope.openDVDDialog = appFactory.openDialog('/templates/dialog/dvd.dialog.html')
+  ('dvd.dialog.controller')
+  ((formData) => {
+    appFactory.doChange('dvd', 'insert', formData)
+      .then(console.log);
+  });
 
 });
 
@@ -36,9 +45,16 @@ app.service('appService', function () {
 
 app.factory('appFactory', function ($mdDialog) {
   return {
-    openDialog: (templateUrl) => (controller) => (confirm) => $mdDialog
-      .show({ templateUrl, controller })
-      .then(confirm, () => console.log(`Cancel dialog ${templateUrl}`))
+    openDialog: (templateUrl) => (controller) => (confirm) => () => $mdDialog
+      .show({
+        templateUrl,
+        controller,
+        clickOutsideToClose:true
+      })
+      .then(confirm, () => console.log(`Cancel dialog ${templateUrl}`)),
+    doChange: (name, action, data) => {
+      return toJSON(post(`/${name}/${action}`, data));
+    }
   }
 });
 

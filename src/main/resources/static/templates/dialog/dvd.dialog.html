@@ -1,12 +1,55 @@
-<md-dialog>
-    <md-dialog-content>
-        <form>
-            <div><label for="title">Title</label><input id="title" type="text"></div>
-            <div><label for="amount">Amount</label><input id="amount" type="range" min="0" max="10"></div>
+<md-dialog layout="column">
+    <md-dialog-content layout-padding>
+        <form name="dvdForm">
+            <md-input-container class="md-block">
+                <label for="title">Title</label>
+                <input id="title"
+                       name="title"
+                       type="text"
+                       ng-model="dvd.title"
+                       required>
+                <div ng-messages="dvdForm.title.$error" role="alert">
+                    <div ng-message="required">Must enter DVD Title</div>
+                </div>
+            </md-input-container>
+            <div layout="row">
+                <md-input-container>
+                    <label for="amount">Amount</label>
+                    <input id="amount"
+                           name="amount"
+                           type="number"
+                           ng-model="dvd.amount"
+                           min="1"
+                           max="10"
+                           required>
+                    <div ng-messages="dvdForm.amount.$error" role="alert">
+                        <div ng-message="required">Must enter DVD Amount</div>
+                        <div ng-message="min, max">Must in range from 1 to 10</div>
+                    </div>
+                </md-input-container>
+                <md-radio-group ng-model="dvd.type" layout="column">
+                    <md-radio-button name="film" value="0">Movie</md-radio-button>
+                    <md-radio-button name="game" value="1">Game</md-radio-button>
+                </md-radio-group>
+            </div>
+            <md-input-container class="md-block">
+                <label for="image"></label>
+                <input id="image" name="image" type="file" required>
+                <div ng-messages="dvdForm.image.$error" role="alert">
+                    <div ng-message="required">Must enter DVD Amount</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label for="description"></label>
+                <textarea id="description"
+                          name="description"
+                          ng-model="dvd.description"
+                          maxlength="30"></textarea>
+            </md-input-container>
         </form>
     </md-dialog-content>
     <md-dialog-actions>
-        <md-button>Submit</md-button>
-        <md-button class="md-raised">Cancel</md-button>
+        <md-button ng-click="insert()">Submit</md-button>
+        <md-button class="md-raised" ng-click="close()">Cancel</md-button>
     </md-dialog-actions>
 </md-dialog>

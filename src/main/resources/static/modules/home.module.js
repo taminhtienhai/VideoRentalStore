@@ -20,7 +20,7 @@ home.controller('home.controller', function ($scope, homeService) {
   $scope.product = { name: 'phone' };
   $scope.loadAllDVD = async (maximum) => ($scope.all = await homeService.findAllDVDWithLimit(maximum));
   $scope.findDVDByName = async (name) => ($scope.all = await homeService.findAllDVDWithTitle(name));
-})
+});
 
 home.service('homeService', function () {
   const dvdUrl = {
