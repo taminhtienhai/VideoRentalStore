@@ -2,6 +2,7 @@ package iuh.software.controller;
 
 import java.util.Optional;
 
+import iuh.software.service.MultipartService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,13 +21,20 @@ import iuh.software.template.Response;
 public class TitleController {
 
 	private final TitleRepository titleRepo;
+	private final MultipartService multipartSer;
 
-	public TitleController(TitleRepository titleRepo) {
+	public TitleController(TitleRepository titleRepo, MultipartService multipartSer) {
 		this.titleRepo = titleRepo;
+		this.multipartSer = multipartSer;
 	}
 
 	@PostMapping(value = "/insert")
 	public ResponseEntity<Response> insert(@RequestBody Title title) {
+		Optional<String> savedImageName = this.multipartSer.store(title.getImage());
+		if (!savedImageName.isPresent()) {
+			throw new RuntimeException("Save image fail");
+		}
+		title.setImageUrl(savedImageName.get());
 		this.titleRepo.save(title);
 		return CommonResponse.OK;
 	}
