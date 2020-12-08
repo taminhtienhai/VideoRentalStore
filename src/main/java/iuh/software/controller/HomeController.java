@@ -23,6 +23,6 @@ public class HomeController {
     @GetMapping("/customer/all/{limit}")
     public ResponseEntity<Set<Customer>> findAllCustomer (@PathVariable int limit) {
         log.info("findAllCustomer execute...");
-        return ResponseEntity.ok(this.customerService.findAll());
+        return ResponseEntity.ok(null);
     }
 }

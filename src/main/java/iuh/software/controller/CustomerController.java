@@ -9,6 +9,7 @@ import iuh.software.service.CustomerService;
 
 import java.util.Optional;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,7 @@ public class CustomerController {
         this.cusSer = cusSer;
     }
 
-    @PostMapping(value = "/insert")
+    @PostMapping(value = "/insert", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Response> insert(@RequestBody Customer customer) {
         this.cusRepo.save(customer);
         return CommonResponse.OK;
