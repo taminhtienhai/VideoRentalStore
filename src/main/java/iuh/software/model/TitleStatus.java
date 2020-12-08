@@ -8,10 +8,6 @@ import javax.persistence.OneToMany;
 import java.time.Duration;
 import java.util.Set;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 1983e784d563a827652226747d9047fb5e7c132b
 @Data
 @Entity(name = "title_status")
 public class TitleStatus extends AbstractBaseModel{

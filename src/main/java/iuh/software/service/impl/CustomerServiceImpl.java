@@ -11,20 +11,4 @@ import java.util.Set;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    @Override
-    public Optional<Customer> searchById(Long id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Set<Customer> searchByName(String name) {
-        return null;
-    }
-
-    @Override
-    public Set<Customer> findAll() {
-        Set<Customer> mock = new HashSet<>();
-        mock.add(new Customer("Hai", "123"));
-        return mock;
-    }
 }
