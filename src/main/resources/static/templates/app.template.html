@@ -6,7 +6,16 @@
         <button id="search">
             <span class="fas fa-search"></span>
         </button>
-        <button ng-click="openDVDDialog()">Open a trial dialog</button>
+    </section>
+    <section>
+        <md-button ng-click="openTitleDialog()">
+            <md-icon md-font-set="material-icons">add</md-icon>
+            <span>Add New Title</span>
+        </md-button>
+        <md-button ng-click="openCustomerDialog()">
+            <md-icon md-font-set="material-icons">add</md-icon>
+            <span>Add New Customer</span>
+        </md-button>
     </section>
 </nav>
 <ng-view></ng-view>

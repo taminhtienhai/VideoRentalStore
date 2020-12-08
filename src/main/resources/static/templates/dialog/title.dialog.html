@@ -1,14 +1,15 @@
-<md-dialog layout="column">
+<md-dialog layout="column"
+           style="width: 40%; height: 60%">
     <md-dialog-content layout-padding>
         <form name="dvdForm" autocomplete="off" enctype="multipart/form-data">
             <md-input-container class="md-block">
-                <label for="title">Title</label>
-                <input id="title"
-                       name="title"
+                <label for="name">Title</label>
+                <input id="name"
+                       name="name"
                        type="text"
-                       ng-model="dvd.title"
+                       ng-model="dvd.name"
                        required>
-                <div ng-messages="dvdForm.title.$error" role="alert">
+                <div ng-messages="dvdForm.name.$error" role="alert">
                     <div ng-message="required">Must enter DVD Title</div>
                 </div>
             </md-input-container>

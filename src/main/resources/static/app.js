@@ -29,10 +29,19 @@ app.component('app', {
 app.controller('app.controller', function ($scope, appFactory, appService) {
   $scope.searchBox = '';
 
-  $scope.openDVDDialog = appFactory.openDialog('/templates/dialog/dvd.dialog.html')
-  ('dvd.dialog.controller')
+  // Open Add New Title Dialog
+  $scope.openTitleDialog = appFactory.openDialog('/templates/dialog/title.dialog.html')
+  ('title.dialog.controller')
   ((formData) => {
-    appFactory.doChange('dvd', 'insert', formData)
+    appFactory.doChange('title', 'insert', formData)
+      .then(console.log);
+  });
+
+  // Open Add New Customer Dialog
+  $scope.openCustomerDialog = appFactory.openDialog('/templates/dialog/customer.dialog.html')
+  ('customer.dialog.controller')
+  ((formData) => {
+    appFactory.doChange('customer', 'insert', formData)
       .then(console.log);
   });
 
