@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import iuh.software.common.CommonResponse;
 import iuh.software.model.DVD;
-import iuh.software.model.Title;
 import iuh.software.repository.DVDRepository;
 import iuh.software.template.Response;
 
@@ -31,9 +30,9 @@ public ResponseEntity<Response> insert(@RequestBody DVD dvd) {
 }
 
 @GetMapping(value = "/delete/{id}")
-public ResponseEntity<Boolean> delete(@PathVariable("id") Long id) {
+public ResponseEntity<Response> delete(@PathVariable("id") Long id) {
     this.dvdRepo.deleteById(id);
-    return ResponseEntity.ok(true);
+    return CommonResponse.OK;
 }
 
 @PostMapping(value = "/update/{id}")
@@ -44,6 +43,8 @@ public ResponseEntity<Response> update(@PathVariable("id") Long id , @RequestBod
 		
 		DVDUpdate.setCreateDate(dvd.getCreateDate());
 		DVDUpdate.setTitle(dvd.getTitle());
+		
+		dvdRepo.save(DVDUpdate);
 		}else {
 		System.out.println("Error Update");
 	}
