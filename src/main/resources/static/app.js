@@ -61,7 +61,6 @@ app.factory('appFactory', function ($mdDialog) {
       })
       .then(confirm, () => console.log(`Cancel dialog ${templateUrl}`)),
     doChange: (name, action, data) => {
-      console.log(data);
       return toJSON(post(`/${name}/${action}`, data));
     }
   }

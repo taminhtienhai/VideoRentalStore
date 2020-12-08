@@ -1,9 +1,14 @@
 package iuh.software.model;
 
-import lombok.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -28,4 +33,5 @@ public class RentalDetail extends AbstractBaseModel {
             referencedColumnName = "id"
     )
     private DVD dvd;
+  
 }

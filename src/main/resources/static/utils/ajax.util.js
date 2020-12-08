@@ -4,14 +4,7 @@
  * @param body
  * @returns {Promise<Response>}
  */
-const request = (url, type, body) => fetch(url, {
-  method: type,
-  body: JSON.stringify(body),
-  headers: {
-    'Accept': 'application/json, text/plain, */*',
-    'Content-Type': 'application/json'
-  }
-});
+const request = (url, type, body) => fetch(url, { method: type, body });
 
 /**
  * @param url

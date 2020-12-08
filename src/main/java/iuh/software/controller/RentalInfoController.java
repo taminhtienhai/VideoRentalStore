@@ -1,6 +1,7 @@
 package iuh.software.controller;
 
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ public class RentalInfoController {
 	@PostMapping(value = "/insert")
 	public ResponseEntity<Response> insert(@RequestBody RentalInfo rentalInfo){
 		this.rentalInfoRepo.save(rentalInfo);
+		
 		return CommonResponse.OK;
 	}
 	@GetMapping(value = "/delete/{id}")
@@ -41,8 +43,8 @@ public class RentalInfoController {
 		if(optionalRentalInfo.isPresent()) {
 			RentalInfo RentalUpdate= optionalRentalInfo.get();
 			
-			RentalUpdate.setRentalDetails(rentalInfo.getRentalDetails());
-			
+			RentalUpdate.setReturnDate(LocalDateTime.now());
+	
 			rentalInfoRepo.save(RentalUpdate);
 			}else {
 			System.out.println("Error Update");
