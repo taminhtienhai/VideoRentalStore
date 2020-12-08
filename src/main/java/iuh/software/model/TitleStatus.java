@@ -1,31 +1,31 @@
 package iuh.software.model;
 
+import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
-import java.math.BigDecimal;
 import java.time.Duration;
 import java.util.Set;
 
-@NoArgsConstructor
+@Builder
 @Data
-@Entity(name = "record_status")
-public class RecordStatus extends AbstractBaseModel{
+@Entity(name = "title_status")
+public class TitleStatus extends AbstractBaseModel{
 
+    @Enumerated
     private RecordType type;
 
     private Duration duration;
 
-    private BigDecimal fee;
+    private Long fee;
 
-    private BigDecimal fine;
+    private Long fine;
 
-    @OneToMany(mappedBy = "recordStatus")
-    private Set<Record> records;
+    @OneToMany(mappedBy = "titleStatus")
+    private Set<Title> records;
 
     public enum RecordType {
         MOVIE,

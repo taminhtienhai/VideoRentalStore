@@ -23,6 +23,10 @@ public abstract class AbstractBaseModel implements Persistable<Long> {
         return this.id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public boolean isNew() {
         return !persisted;

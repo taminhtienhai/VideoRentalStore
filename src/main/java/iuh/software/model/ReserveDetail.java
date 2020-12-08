@@ -1,9 +1,7 @@
 package iuh.software.model;
 
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -21,6 +19,6 @@ public class ReserveDetail extends AbstractBaseModel {
     private Customer customer;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "record_id")
-    private Record record;
+    @JoinColumn(name = "title_id")
+    private Title title;
 }

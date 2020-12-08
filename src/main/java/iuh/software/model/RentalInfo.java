@@ -12,7 +12,7 @@ import java.util.Set;
 @Entity(name = "rental_info")
 public class RentalInfo extends AbstractBaseModel {
 
-    @Column(name = "start_date")
+    @Column(name = "rental_date")
     private LocalDateTime startDate;
 
     @Column(name = "return_date")
