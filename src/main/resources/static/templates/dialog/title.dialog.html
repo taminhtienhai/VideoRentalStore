@@ -1,6 +1,6 @@
 <md-dialog layout="column">
     <md-dialog-content layout-padding>
-        <form name="dvdForm">
+        <form name="dvdForm" autocomplete="off">
             <md-input-container class="md-block">
                 <label for="title">Title</label>
                 <input id="title"
@@ -27,7 +27,7 @@
                         <div ng-message="min, max">Must in range from 1 to 10</div>
                     </div>
                 </md-input-container>
-                <md-radio-group ng-model="dvd.type" layout="column">
+                <md-radio-group ng-model="dvd.type" layout="column" style="display: inline">
                     <md-radio-button name="film" value="0">Movie</md-radio-button>
                     <md-radio-button name="game" value="1">Game</md-radio-button>
                 </md-radio-group>

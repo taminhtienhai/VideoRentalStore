@@ -6,8 +6,13 @@ dialog.controller('dvd.dialog.controller', function ($scope, $mdDialog) {
   $scope.insert = () => $mdDialog.hide($scope.dvd);
 });
 
-dialog.controller('customer.dialog.controller', function ($scope) {
+dialog.controller('customer.dialog.controller', function ($scope, $mdDialog) {
   $scope.customer = {};
   $scope.close = () => $mdDialog.cancel();
   $scope.insert = () => $mdDialog.hide($scope.customer);
+});
+
+
+dialog.service('dialogService', function () {
+
 });

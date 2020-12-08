@@ -15,7 +15,8 @@ public class RentalDetail extends AbstractBaseModel {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
             name = "rental_info_id",
-            updatable = false
+            nullable = false,
+            referencedColumnName = "id"
     )
     private RentalInfo rentalInfo;
 
@@ -23,7 +24,8 @@ public class RentalDetail extends AbstractBaseModel {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
             name = "dvd_id",
-            updatable = false
+            nullable = false,
+            referencedColumnName = "id"
     )
     private DVD dvd;
 }

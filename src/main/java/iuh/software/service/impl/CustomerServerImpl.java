@@ -15,44 +15,5 @@ import iuh.software.service.CustomerService;
 
 @Service
 public class CustomerServerImpl implements CustomerService{
-
-@Autowired
-private CustomerRepository customerRepository;
-
-	@Override
-	public Optional<Customer> searchById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Set<Customer> searchByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Customer insertCustomer(String name, String phone, LocalDate birth, String email) {
-		
-		 Customer customer = new Customer();
-		 
-	        customer.setName(name);
-	        customer.setPhone(phone);
-	        customer.setBirth(birth);
-	        customer.setEmail(email);
-	        
-	        customerRepository.save(customer);
-	        return customer;
-	}
-
-	@Override
-	public List<Customer> getAllCutomer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-
-
  
 }

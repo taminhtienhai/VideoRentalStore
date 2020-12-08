@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -31,5 +32,10 @@ public class RentalInfo extends AbstractBaseModel {
             cascade = CascadeType.PERSIST,
             mappedBy = "rentalInfo"
     )
-    private Set<RentalDetail> rentalDetails;
+    private List<RentalDetail> rentalDetails;
+
+    @PrePersist
+    private void setUp() {
+        rentalDetails.forEach(detail -> detail.setRentalInfo(this));
+    }
 }
