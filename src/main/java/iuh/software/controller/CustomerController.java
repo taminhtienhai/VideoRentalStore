@@ -7,6 +7,7 @@ import iuh.software.model.Customer;
 import iuh.software.repository.CustomerRepository;
 import iuh.software.service.CustomerService;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.MediaType;
@@ -24,6 +25,11 @@ public class CustomerController {
     public CustomerController(CustomerRepository cusRepo, CustomerService cusSer) {
         this.cusRepo = cusRepo;
         this.cusSer = cusSer;
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Customer>> all() {
+        return ResponseEntity.ok(this.cusRepo.findAll());
     }
 
     @PostMapping(value = "/insert", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

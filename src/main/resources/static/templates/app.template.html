@@ -1,23 +1,64 @@
 <nav>
-    <section>
-        <input type="text"
-               placeholder="Enter DVD title here"
-               ng-model="searchBox">
-        <button id="search">
+    <section layout="row" flex>
+        <md-input-container>
+            <label for="search-box"></label>
+            <input id="search-box"
+                   type="text"
+                   placeholder="Search here"
+                   ng-model="searchBox">
+        </md-input-container>
+        <md-button id="search-button">
             <span class="fas fa-search"></span>
-        </button>
+        </md-button>
     </section>
     <section>
-        <md-button ng-click="openTitleDialog()">
-            <md-icon md-font-set="material-icons">add</md-icon>
-            <span>Add New Title</span>
-        </md-button>
-        <md-button ng-click="openCustomerDialog()">
-            <md-icon md-font-set="material-icons">add</md-icon>
-            <span>Add New Customer</span>
-        </md-button>
+        <label class="md-raised md-button">
+            <span>DVD</span>
+            <input type="radio"
+                   name="dvdMode"
+                   value="0"
+                   style="visibility: hidden;"
+                   ng-model="mode"
+                   ng-change="changeMode()">
+        </label>
+        <label class="md-raised md-button">
+            <input type="radio"
+                   name="customerMode"
+                   value="1"
+                   style="visibility: hidden;"
+                   ng-model="mode"
+                   ng-change="changeMode()">
+            <span>Customer</span>
+        </label>
     </section>
 </nav>
 <ng-view></ng-view>
+<md-menu id="menu">
+    <md-button class="md-icon-button" aria-label="Open interactions menu">
+        <md-icon md-font-set="material-icons"
+                 ng-click="$mdMenu.open($event)">menu_open</md-icon>
+    </md-button>
+    <md-menu-content>
+        <md-menu-item>
+            <md-button ng-click="openRentalDialog()">
+                <md-icon md-font-set="material-icons">add</md-icon>
+                <span>Rent Videos</span>
+            </md-button>
+        </md-menu-item>
+        <md-menu-divider></md-menu-divider>
+        <md-menu-item>
+            <md-button ng-click="openTitleDialog()">
+                <md-icon md-font-set="material-icons">add</md-icon>
+                <span>Add New Title</span>
+            </md-button>
+        </md-menu-item>
+        <md-menu-item>
+            <md-button ng-click="openCustomerDialog()">
+                <md-icon md-font-set="material-icons">add</md-icon>
+                <span>Add New Customer</span>
+            </md-button>
+        </md-menu-item>
+    </md-menu-content>
+</md-menu>
 <script src="/js/index.js"></script>
 

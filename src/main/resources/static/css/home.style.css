@@ -31,9 +31,15 @@ main > .item {
     background-color: #f7f7f7;
     text-align: center;
     transition: ease .06s;
+    horiz-align: center;
 }
 
 main > .item:hover {
     box-shadow: 0 1px 7px 0 var(--shadow-color);
     transform: translateY(1px);
+}
+
+md-success-toast-theme .md-toast-content {
+    background-color: green;
+    color: white;
 }

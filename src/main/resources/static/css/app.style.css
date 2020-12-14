@@ -35,12 +35,19 @@ html, body {
 
 app {
     display: grid;
+    position: relative;
     grid-template:
             "nav nav nav" 10%
             "con con con" auto / 1fr 1fr 1fr;
     padding: 5px;
     /** **/
     min-height: 100%;
+}
+
+#menu {
+    position: absolute;
+    top: 10%;
+    right: 0;
 }
 
 
@@ -87,6 +94,11 @@ ng-view:before {
 
 nav, ng-view {
     padding: 10px;
+}
+
+md-success-toast-theme .md-toast-content {
+    background-color: green;
+    color: white;
 }
 
 /* Responsive */

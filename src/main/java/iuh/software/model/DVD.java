@@ -1,5 +1,6 @@
 package iuh.software.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,12 +15,14 @@ public class DVD extends AbstractBaseModel{
     @Column(name = "create_date")
     private LocalDateTime createDate;
 
+    @JsonIgnore
     @OneToMany(
             cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
             mappedBy = "dvd"
     )
     private Set<RentalDetail> rentalDetails;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "title_id", nullable = false, referencedColumnName = "id")
     private Title title;

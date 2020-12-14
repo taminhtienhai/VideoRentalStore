@@ -1,0 +1,35 @@
+<md-dialog layout="column"
+           style="width: 40%; height: fit-content">
+    <md-dialog-content layout-padding>
+        <form autocomplete="off">
+            <md-input-container>
+                <label for="customerId">CustomerID</label>
+                <input type="text"
+                       id="customerId"
+                       name="customerId"
+                       ng-model="rentalInfo.customerId"
+                       required>
+            </md-input-container>
+            <md-input-container>
+                <label for="titleId">TitleID</label>
+                <input type="text"
+                       id="titleId"
+                       name="titleId"
+                       ng-model="rentalInfo.titleId"
+                       required>
+                <md-button ng-click="addVideo()">
+                    <md-icon md-font-icon="material-icon">add</md-icon>
+                </md-button>
+            </md-input-container>
+            <md-list>
+                <md-list-item ng-repeat="video in videos">
+                    <p class="md-list-item-text">{{ video.name }}</p>
+                </md-list-item>
+            </md-list>
+        </form>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="insert()">Rent</md-button>
+        <md-button class="md-raised" ng-click="close()">Cancel</md-button>
+    </md-dialog-actions>
+</md-dialog>

@@ -1,8 +1,8 @@
 package iuh.software.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -28,7 +28,6 @@ public class Title extends AbstractBaseModel {
     @Transient
     private int amount;
 
-    @JsonIgnore
     @OneToMany(
             cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
             mappedBy = "title")

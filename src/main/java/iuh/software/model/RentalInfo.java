@@ -1,11 +1,13 @@
 package iuh.software.model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -18,6 +20,12 @@ public class RentalInfo extends AbstractBaseModel {
 
     @Column(name = "return_date")
     private LocalDateTime returnDate;
+
+    @Column(name = "total_fee")
+    private Long totalFee;
+
+    @Column(name = "total_fine")
+    private Long totalFine;
 
     @NonNull
     @ManyToOne(fetch = FetchType.LAZY)

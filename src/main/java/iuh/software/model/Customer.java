@@ -1,5 +1,6 @@
 package iuh.software.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -27,12 +28,14 @@ public class Customer extends AbstractBaseModel {
     @Email
     private String email;
 
+    @JsonIgnore
     @OneToMany(
             cascade = CascadeType.REMOVE,
             mappedBy = "customer"
     )
     private Set<RentalInfo> rentalInfos;
 
+    @JsonIgnore
     @OneToMany(
             mappedBy = "customer"
     )

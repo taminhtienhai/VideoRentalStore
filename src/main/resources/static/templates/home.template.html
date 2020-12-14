@@ -1,7 +1,11 @@
 <link rel="stylesheet" href="/css/home.style.css">
 <main>
-    <article class="item" ng-repeat="product in all | filter: searchBox"  ng-click="loadAllDVD(10)">
-        <img src="" alt="no image">
-        <p>{{product.name}}</p>
+    <article class="item" ng-repeat="item in catalog">
+        <img src="https://thumbs.dreamstime.com/b/no-image-available-icon-vector-illustration-flat-design-140476186.jpg"
+             alt="no image"
+             style="width: 100%; height: 100%">
+        <section layout="row" flex>
+            <p>{{ item.name }}</p>
+        </section>
     </article>
 </main>

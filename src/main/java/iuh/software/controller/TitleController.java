@@ -29,6 +29,11 @@ public class TitleController {
 		this.multipartSer = multipartSer;
 	}
 
+	@GetMapping(value = "/find/{id}")
+	public ResponseEntity<Title> findById(@PathVariable("id") Long id) {
+		return ResponseEntity.ok(this.titleRepo.findById(id).orElse(null));
+	}
+
 	@GetMapping(value = "/all")
 	public ResponseEntity<List<Title>> findAllTitle() {
 		List<Title> titles = this.titleRepo.findAll();
